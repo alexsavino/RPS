@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreHaptics
 
-// Card model
+
 class Card: ObservableObject, Identifiable, Equatable {
     static func == (lhs: Card, rhs: Card) -> Bool {
         lhs.id == rhs.id
@@ -27,7 +27,7 @@ class Card: ObservableObject, Identifiable, Equatable {
     }
 }
 
-// CardFront View
+
 struct CardFront: View {
     @ObservedObject var card: Card
     @Binding var userChoice: String
@@ -102,7 +102,7 @@ struct CardFront: View {
     }
 
     func flipBackAllCards() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { // Adjusted delay to 5 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             withAnimation(.easeInOut(duration: 0.5)) {
                 rockCard.flipped = false
                 paperCard.flipped = false
@@ -114,7 +114,6 @@ struct CardFront: View {
                     paperCard.chosen = false
                     scissorCard.chosen = false
                 }
-                // Update the resultFadeOut and subtitleFadeOut states here
                 withAnimation {
                     resultFadeOut = true
                     subtitleFadeOut = true
@@ -126,7 +125,7 @@ struct CardFront: View {
 
 }
 
-// CardBack View
+
 struct CardBack: View {
     var body: some View {
         Rectangle()
@@ -149,7 +148,7 @@ struct CardView: View {
 
     @State private var degrees: Double = 0.0
     @State private var isFrontVisible: Bool = true
-    @State private var scaleFactor: CGFloat = 1.0 // Add scale factor state
+    @State private var scaleFactor: CGFloat = 1.0
 
     var body: some View {
         ZStack {
@@ -181,6 +180,7 @@ struct CardView: View {
         .frame(width: 104, height: 160)
     }
 }
+
 
 struct ContentView: View {
     @State private var userChoice: String = ""
@@ -225,7 +225,6 @@ struct ContentView: View {
                             }
                     }
                 }
-                //.position(x: geometry.size.width / 2, y: 155)
                 .position(x: geometry.size.width / 2, y: geometry.size.height > geometry.size.width ? 155 : 10)
 
 
@@ -236,7 +235,6 @@ struct ContentView: View {
                 }
             }
             .font(.system(size: 17, weight: .bold, design: .rounded))
-            //.position(x: geometry.size.width/2, y: geometry.size.height/2)
             .position(x: geometry.size.width / 2, y: geometry.size.height > geometry.size.width ? geometry.size.height/2 : geometry.size.height-100)
             .onChange(of: result) { newValue in
                 
@@ -273,14 +271,12 @@ struct ContentView: View {
 }
 
 
-
-
-// Global card instances
 var rockCard = Card(word: "Rock", emoji: "👊")
 var paperCard = Card(word: "Paper", emoji: "📄")
 var scissorCard = Card(word: "Scissors", emoji: "✂️")
 
-// Preview
+
+
 #Preview {
     ContentView()
 }
