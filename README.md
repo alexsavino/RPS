@@ -8,4 +8,7 @@ This repository contains a personal project I developed shortly after finishing 
 I aimed to emulate the animation style and pace of Duolingo.
 
 Below is a GIF showing a single round of the game.
+
 ![SimulatorScreenRecording-iPhone15Pro-2024-06-06at00 20 48-ezgif com-resize](https://github.com/alexsavino/RPS/assets/74523577/ec746669-eb77-4d95-8a35-e5b93b9ac74a)
+mimimi
+
